@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "nrf_delay.h": "c",
+        "nrf_soc.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

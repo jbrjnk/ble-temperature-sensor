@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "GDB Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/output/debugS130/nrf51822_xxaa.out",
+            "args": [],
+            "preLaunchTask": "make-build debug",
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "MIMode": "gdb",
+            "miDebuggerPath": "/opt/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gdb",  
+            "logging": {
+                "trace": true,
+                "traceResponse": true
+            },          
+            "setupCommands": [
+                { "text": "-target-select remote host.docker.internal:3333", "description": "connect to target", "ignoreFailures": false },
+                { "text": "-file-exec-and-symbols ${workspaceRoot}/build/output/debugS130/nrf51822_xxaa.out", "description": "load file", "ignoreFailures": false},
+                { "text": "-interpreter-exec console \"monitor endian little\"", "ignoreFailures": false },
+                { "text": "-interpreter-exec console \"monitor reset\"", "ignoreFailures": false },
+                { "text": "-interpreter-exec console \"monitor halt\"", "ignoreFailures": false },
+                { "text": "-interpreter-exec console \"monitor arm semihosting enable\"", "ignoreFailures": false },
+                { "text": "-target-download", "description": "flash target", "ignoreFailures": false },
+                { "text": "-interpreter-exec console \"monitor reset halt\"", "ignoreFailures": false },
+
+            ],
+        }
+    ]
+}

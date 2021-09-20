@@ -1,0 +1,81 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make-build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "PARAM_VARIANT=RELEASE",
+                "PARAM_SOFTDEVICE=S130",
+                "-j4"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "make-build debug",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "PARAM_VARIANT=DEBUG",
+                "PARAM_SOFTDEVICE=S130",
+                "-j4"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "flash release",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "flash",
+                "PARAM_VARIANT=RELEASE",
+                "PARAM_SOFTDEVICE=S130",
+                "-j4"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "flash release production (no logs)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "flash",
+                "PARAM_VARIANT=RELEASE_PROD",
+                "PARAM_SOFTDEVICE=S130",
+                "-j4"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "flash softdevice",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "flash_softdevice",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
